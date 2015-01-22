@@ -27,6 +27,7 @@ FUNCTIONS AND VARIABLES IN RUN_ANALYSIS.R
 
 contents:
 I.
+
 1. Helper functions for importing the data from the text files.
 
 2. Functions for finding the relevant data and renaming the columns/activity variables
