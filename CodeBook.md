@@ -38,6 +38,7 @@ I.
 
 
 II.
+
 5. functions for melting the tidy data set created in part I and finding the means of the relevant variables
 
 6. Function for recasting the melted data frame into a wide data frame, and 
@@ -46,6 +47,7 @@ II.
 
 
 I.
+
 1. Helper functions for importing data from txt files:
 
 dfFromFile(tableFile) : takes a txt file with a table and returns a data frame. Will use this function on the the test/X_test.txt and train/X_train.txt files. 
