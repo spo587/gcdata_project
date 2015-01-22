@@ -3,16 +3,16 @@ A guide to using run_analysis.R to clean and process the data on smartphone move
 THE DATA
 
 The data is all stored in the directory UCI HAR Dataset, with further paths to the data described below.
-test/X_test.txt : The test data, with the measurements of the smartphone variables as different columns. Each row corresponds to a sample for a single subject and activity. The labels for these variables are not in this set, but rather are in the following two files.
-test/subject_test.txt: A single column text file containing the subject labels for the rows in the X_test file above
-test/y_test.txt: A single column text file containing the activity labels for the rows in the X_test file above.
+test/X_test.txt : The test data, with the measurements of the smartphone variables as different columns. Each row corresponds to a sample for a single subject and activity. The labels for these variables are not in this set, but rather are in the following two files. This data set is 2947 x 561, indicating 2947 observations of 561 variables.
+test/subject_test.txt: A single column text file containing the 2947 subject labels for the rows in the X_test file above
+test/y_test.txt: A single column text file containing the 2947 activity labels for the rows in the X_test file above.
 
 
-train/X_train.txt: just like X_test.txt but for the training data.
-train/subject_train.txt: just like subject_test.txt but for the training data.
-train/y_train.txt: just like y_test.txt, but for the subject_data.
+train/X_train.txt: just like X_test.txt but for the training data. 7352 rows (observations) of the 561 variables.
+train/subject_train.txt: just like subject_test.txt but for the training data. 7352 rows.
+train/y_train.txt: just like y_test.txt, but for the subject_data, again, 7352 rows.
 
-features.txt: a two column text file, with the second column giving the variable names that correspond to the rows of the X_test.txt and X_train.txt files above (the first column is just numerical labels.)
+features.txt: a two column text file, with the second column giving the variable names that correspond to the columns of the X_test.txt and X_train.txt files above (the first column is just numerical labels.) It is 561 rows, 2 columns.
 
 activity_labels.txt: a 6 row text file for converting the y_test and y_train activity labels (integers 1-6) to their corresponding activities (walking, walking upstairs, etc.)
 
@@ -46,11 +46,11 @@ activities and subject file and returns a single data frame with the activity la
 
 2. Functions for finding the relevant data and renaming the columns/activity variables:
 
-findRelevantCols(featureLabelFile) : takes the features.txt file as input and finds all the variables with mean() and std() in them, returns a vector with the relevant indices.
+findRelevantCols(featureLabelFile) : takes the features.txt file as input and finds all 66 of the variables with mean() and std() in them, returns a vector with the relevant indices.
 
 getPreliminaryColNames(featureLabelFile) : takes the same input, returns a vector with the names of the relevant variables from the features.txt file.
 
-extractRelevantCols(df, featureLabelFile): takes a data frame from prepareDF and the features.txt file and returns a data frame only with the relevant columns returned from findRelevantCols
+extractRelevantCols(df, featureLabelFile): takes a data frame from prepareDF and the features.txt file and returns a data frame only with the 66 (variables) + 2 (subject, activity) relevant columns returned from findRelevantCols
 
 renameVariablesPreliminary(df, featureLabelFile): takes a data frame from the above function and adds relevant column names from extractRelevantCols, returns that data frame.
 
@@ -74,11 +74,11 @@ boundData(df1, df2): essentially the same, but the output is slightly different,
 
 4. Two functions to take the actual data and return a tidy data frame:
 
-prepareTestAndTrainDataAndMerge() : no inputs, just outputs the merged data from the training set and test set, with the label columns from the y_test and y_train and subject_test and subject_train files added, but without any columns or labels renamed
+prepareTestAndTrainDataAndMerge() : no inputs, just outputs the merged data from the training set and test set, with the label columns from the y_test and y_train and subject_test and subject_train files added, but without any columns or labels renamed.
 
 makeTidyAndLabeledDataFrame() : uses all of the above functions to perform step 4 of the assignment in one step, returns a data frame with only the relevant variables, relabeled, and with the activities renamed as well. 
 
-Using the above function, we have a variable that stores the tidy data frame:
+Using the above function, we have a variable that stores the tidy data frame. It takes all the rows of the training data and test data (so 7352 + 2947 = 10229 rows) and 68 columns, one for the activity, one for subject, and the 66 mean and standard deviation variables.
 
 tidyDFextractedRenamed <- makeTidyAndLabeledDataFrame()
 
@@ -96,15 +96,15 @@ combineActivitySubjectCols(moltendf) : takes a data frame returned by meltAndFin
 
 6. function to recast the above into a wide data frame
 
-recastDF(moltenDF) : takes a molten data frame returned by combineActivitySubjectCols above and recasts it as a wide data frame with each subject activity pair as a single row, with each variable's mean in the columns. so it returns a 180 x 66 data frame
+recastDF(moltenDF) : takes a molten data frame returned by combineActivitySubjectCols above and recasts it as a wide data frame with each subject activity pair as a single row, with each variable's average in the columns. so it returns a 180 x 67 data frame
 
 
 
 7. function to do assignment prompt 5 all in a single step, from data frame in step 4
 
-newTidyDataSetWithMeansWide(df) : takes a data frame from I. 4 above and applies functions from II. 5 and II. 6 above to return a single wide, tidy data frame with the first column renamed to 'activity/subject pairs'.
+newTidyDataSetWithMeansWide(df) : takes a data frame from I. 4 above and applies functions from II. 5 and II. 6 above to return a single wide, tidy data frame with the first column renamed to 'activity/subject pairs' and the subsequent columns renamed to 'average of ...' whatever variable they're averaging..
 
-meansOfSubjectActivityPairs stores this wide data frame in a variable.
+meansOfSubjectActivityPairs stores this wide data frame.
 
 
 

@@ -1,6 +1,6 @@
-A guide toe using run_analysis.R to produce two tidy data frames from the UCI HAR dataset.
+A guide to using run_analysis.R to produce two tidy data frames from the UCI HAR dataset.
 
-The data in UCI HAR dataset were collected from 30 subjects performing 6 activities while wearing a smart phone on their waists.
+The data in UCI HAR dataset displays physical measurements from accelerometers and gyroscopes on smart phones worn at the waist of 30 subjects performing 6 activities (with multiple samples of each activity).
 
 The run_analysis.R script takes the data collected and returns two tidy data frames, initialTidyDF and meansOfSubjectActivityPairs.
 
