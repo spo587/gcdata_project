@@ -180,7 +180,7 @@ makeTidyAndLabeledDataFrame <- function(){
 
 ## we can store our processed data frame in the variable below
 
-initialTidyDF <- makeTidyAndLabeledDataFrame()
+tidyDFextractedRenamed <- makeTidyAndLabeledDataFrame()
 
 
 ## II. 5
@@ -216,6 +216,9 @@ combineActivitySubjectCols <- function(moltendf){
 
 recastDF <- function(moltendf) {
     recast <- dcast(moltendf, moltendf$activitySubjectPairs ~ moltendf$variable)
+    ## add 'average of' to each column name, except first column
+    names(recast)[2:length(names(recast))] <- (paste('average of', names(recast)[2:length(names(recast))]))
+                    
     recast
 }
 
@@ -236,7 +239,7 @@ newTidyDataSetWithMeansWide <- function(df){
 
 ## finally, let's store our means data frame in a variable 
 
-meansOfSubjectActivityPairs <- newTidyDataSetWithMeansWide(initialTidyDF)
+meansOfSubjectActivityPairs <- newTidyDataSetWithMeansWide(tidyDFextractedRenamed)
 
 
 
