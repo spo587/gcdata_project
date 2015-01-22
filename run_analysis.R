@@ -9,9 +9,9 @@
 ## our tidy data frame (for prompt 4 of assignment) in fell swoop.
 
 ## II. In part II, we deal with prompt 5.
-## 1. melt the data frame from prompt 4, above and find the means of each subject x activity pair
-## 2. recast into a wide data frame with one observation per row and one variable per column
-## 3. Combine into a single step.
+## 5. melt the data frame from prompt 4, above and find the means of each subject x activity pair
+## 6. recast into a wide data frame with one observation per row and one variable per column
+## 7. Combine into a single step.
 
 ## Okay, here we go. I. 1
 
@@ -22,7 +22,7 @@ dfFromFile <- function(tableFile){
 }
 
 ## extract a vector from a txt file that only has one relevant column,
-## an independent variable, such as the subjects files.
+## an independent variable, such as the subjects file.
 
 labelVector <- function(oneColumnFile, colNumber){
     labelAsDF <- read.table(oneColumnFile)
@@ -42,6 +42,7 @@ prepareDF <- function(tableFile, activityFile, subjectFile){
     fullDF <- cbind(activityVec, subjectVec, variableDF)
     fullDF
 }
+
 
 ## find the relevant features (ie, the ones with means
 ## and standard deviations). Returns a vector with the 
@@ -104,6 +105,7 @@ renameActivityVariables <- function(df){
 ## this function takes the column of cryptic variable names
 ## and replaces them with something english and readable, though also
 ## much longer and more annoying
+
 renameColNames <- function(vec) {
     for(i in 3:length(vec)){
         first <- ifelse(substr(vec[i],1,1) == 't','time domain','frequency domain')
@@ -176,7 +178,12 @@ makeTidyAndLabeledDataFrame <- function(){
 }
 
 
-## II. 1
+## we can store our processed data frame in the variable below
+
+initialTidyDF <- makeTidyAndLabeledDataFrame()
+
+
+## II. 5
 ## and on to part 2, dealing with prompt 5.
 
 ## this function below returns a molten (narrow) data frame with the means
@@ -201,7 +208,7 @@ combineActivitySubjectCols <- function(moltendf){
     newdfCombined[,c(1,4,5)]
 }
 
-# II. 2
+# II. 6
 ## finally, for readability, a function
 ## to recast our molten data frame back to wide format,
 ## leaving us with a nice, clean, tidy data frame with one activity subject pair
@@ -212,7 +219,7 @@ recastDF <- function(moltendf) {
     recast
 }
 
-# II. 3
+# II. 7
 
 ## this achieves step 5 all in one step, with the input df a data frame
 ## returned from prompt 4. Alternatively, uncomment the first line and 
@@ -226,6 +233,10 @@ newTidyDataSetWithMeansWide <- function(df){
     names(wide)[1] <- 'activity/subject pairs'
     wide
 }
+
+## finally, let's store our means data frame in a variable 
+
+meansOfSubjectActivityPairs <- newTidyDataSetWithMeansWide(initialTidyDF)
 
 
 
