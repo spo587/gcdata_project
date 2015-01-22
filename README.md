@@ -10,7 +10,7 @@ The first data frame contains many observations of each of the variables for eac
 The second data frame, meansOfSubjectActivityPairs, takes mean value of each of the 66 variables from the initial data frame above, that is, one summary value of each variable across all the measurements for each subject/activity pair. Thus it is a 180 x 67 data frame, with 180 columns for the 30 subjects * 6 activities, 1 column for the subject activity pair label, and 66 columns for the means of each of the variables.
 
 
-Running run_analysis.R will put the two data frames in your R session, along with the many helper functions in the run_analysis.R script. For more information on the functions and variables, see the code book, CodeBook.md, or the script itself, which contains more detailed information for each step of the processing.
+Running run_analysis.R will put the two data frames in your R session, along with the many helper functions in the run_analysis.R script. It also writes the final data frame to a txt file which will be stored in the working directory where the script is run. For more information on the functions and variables, see the code book, CodeBook.md, or the script itself, which contains more detailed information for each step of the processing.
 
 
 

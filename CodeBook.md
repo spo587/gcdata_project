@@ -28,7 +28,7 @@ I.
 II.
 5. functions for melting the tidy data set created in part I and finding the means of the relevant variables
 6. Function for recasting the melted data frame into a wide data frame, and 
-7. function to perform steps 5 and 6 in one step, and a variable to store final wide frame (meansOfSubjectActivityPairs)
+7. function to perform steps 5 and 6 in one step, and a variable to store final wide frame (meansOfSubjectActivityPairs), along with writing the final data frame to a txt file in the working directory.
 
 
 I.

@@ -241,5 +241,5 @@ newTidyDataSetWithMeansWide <- function(df){
 
 meansOfSubjectActivityPairs <- newTidyDataSetWithMeansWide(tidyDFextractedRenamed)
 
-
-
+## write the data frame to a txt file in the working directory
+write.table(meansOfSubjectActivityPairs, 'DFprompt5averagesForEachSubjectActivityPair.txt', row.names=FALSE)
