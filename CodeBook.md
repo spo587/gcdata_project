@@ -3,6 +3,7 @@ A guide to using run_analysis.R to clean and process the data on smartphone move
 THE DATA
 
 The data is all stored in the directory UCI HAR Dataset, with further paths to the data described below.
+
 test/X_test.txt : The test data, with the measurements of the smartphone variables as different columns. Each row corresponds to a sample for a single subject and activity. The labels for these variables are not in this set, but rather are in the following two files. This data set is 2947 x 561, indicating 2947 observations of 561 variables.
 test/subject_test.txt: A single column text file containing the 2947 subject labels for the rows in the X_test file above
 test/y_test.txt: A single column text file containing the 2947 activity labels for the rows in the X_test file above.
