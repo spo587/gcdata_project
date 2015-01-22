@@ -17,9 +17,7 @@ train/subject_train.txt: just like subject_test.txt but for the training data. 7
 
 train/y_train.txt: just like y_test.txt, but for the subject_data, again, 7352 rows.
 
-features.txt: a two column text file, with the second column giving the variable names that correspond to the columns of the X_
-
-test.txt and X_train.txt files above (the first column is just numerical labels.) It is 561 rows, 2 columns.
+features.txt: a two column text file, with the second column giving the variable names that correspond to the columns of the X_test.txt and X_train.txt files above (the first column is just numerical labels.) It is 561 rows, 2 columns.
 
 
 activity_labels.txt: a 6 row text file for converting the y_test and y_train activity labels (integers 1-6) to their corresponding activities (walking, walking upstairs, etc.)
