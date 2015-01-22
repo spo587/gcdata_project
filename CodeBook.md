@@ -59,7 +59,6 @@ activities and subject file and returns a single data frame with the activity la
 
 
 
-
 2. Functions for finding the relevant data and renaming the columns/activity variables:
 
 findRelevantCols(featureLabelFile) : takes the features.txt file as input and finds all 66 of the variables with mean() and std() in them, returns a vector with the relevant indices.
@@ -78,13 +77,11 @@ renameVariables(df) : takes a data frame returned from renameActivityVariables o
 
 
 
-
 3. Functions for merging the test and train data:
 
 merge(df1, df2) : takes two data frames, returns a single one, a vertical merge of the two using merge function
 
 boundData(df1, df2): essentially the same, but the output is slightly different, using rbind instead of merge
-
 
 
 
@@ -102,6 +99,7 @@ tidyDFextractedRenamed <- makeTidyAndLabeledDataFrame()
 
 
 II.
+
 5. functions for melting the tidy data set created in part I and finding the means of the relevant variables
 
 meltAndFindMeans(df) : takes a data frame created in step 4 above, melts it into narrow form and creates a new variable with the means of all activity subject pairs. Returns a data frame that is then 11880 x 4 (11880 = 30 subjects * 6 activities * 66 variables)
@@ -109,11 +107,9 @@ meltAndFindMeans(df) : takes a data frame created in step 4 above, melts it into
 combineActivitySubjectCols(moltendf) : takes a data frame returned by meltAndFindMeans above and combines the first two columns (activity label and subject label) into one column for clarity, so each entry is a single activity subject pair, returns this data frame now with only 3 columns (activitySubjectPair, variable, and means)
 
 
-
 6. function to recast the above into a wide data frame
 
 recastDF(moltenDF) : takes a molten data frame returned by combineActivitySubjectCols above and recasts it as a wide data frame with each subject activity pair as a single row, with each variable's average in the columns. so it returns a 180 x 67 data frame
-
 
 
 7. function to do assignment prompt 5 all in a single step, from data frame in step 4
