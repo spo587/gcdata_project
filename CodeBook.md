@@ -28,27 +28,27 @@ FUNCTIONS AND VARIABLES IN RUN_ANALYSIS.R
 contents:
 I.
 
-1. Helper functions for importing the data from the text files.
+i. Helper functions for importing the data from the text files.
 
-2. Functions for finding the relevant data and renaming the columns/activity variables
+ii. Functions for finding the relevant data and renaming the columns/activity variables
 
-3. Functions for merging the test and train data
+iii. Functions for merging the test and train data
 
-4. Two functions to take the actual data files and return a clean, tidy data frame, stored in the variable tidyDFextractedRenamed
+iv. Two functions to take the actual data files and return a clean, tidy data frame, stored in the variable tidyDFextractedRenamed
 
 
 II.
 
-5. functions for melting the tidy data set created in part I and finding the means of the relevant variables
+v. functions for melting the tidy data set created in part I and finding the means of the relevant variables
 
-6. Function for recasting the melted data frame into a wide data frame, and 
+vi. Function for recasting the melted data frame into a wide data frame, and 
 
-7. function to perform steps 5 and 6 in one step, and a variable to store final wide frame (meansOfSubjectActivityPairs), along with writing the final data frame to a txt file in the working directory.
+vii. function to perform steps 5 and 6 in one step, and a variable to store final wide frame (meansOfSubjectActivityPairs), along with writing the final data frame to a txt file in the working directory.
 
 
 I.
 
-1. Helper functions for importing data from txt files:
+i. Helper functions for importing data from txt files:
 
 dfFromFile(tableFile) : takes a txt file with a table and returns a data frame. Will use this function on the the test/X_test.txt and train/X_train.txt files. 
 
@@ -59,7 +59,7 @@ activities and subject file and returns a single data frame with the activity la
 
 
 
-2. Functions for finding the relevant data and renaming the columns/activity variables:
+ii. Functions for finding the relevant data and renaming the columns/activity variables:
 
 findRelevantCols(featureLabelFile) : takes the features.txt file as input and finds all 66 of the variables with mean() and std() in them, returns a vector with the relevant indices.
 
@@ -77,7 +77,7 @@ renameVariables(df) : takes a data frame returned from renameActivityVariables o
 
 
 
-3. Functions for merging the test and train data:
+iii. Functions for merging the test and train data:
 
 merge(df1, df2) : takes two data frames, returns a single one, a vertical merge of the two using merge function
 
@@ -85,7 +85,7 @@ boundData(df1, df2): essentially the same, but the output is slightly different,
 
 
 
-4. Two functions to take the actual data and return a tidy data frame:
+iv. Two functions to take the actual data and return a tidy data frame:
 
 prepareTestAndTrainDataAndMerge() : no inputs, just outputs the merged data from the training set and test set, with the label columns from the y_test and y_train and subject_test and subject_train files added, but without any columns or labels renamed.
 
@@ -100,19 +100,19 @@ tidyDFextractedRenamed <- makeTidyAndLabeledDataFrame()
 
 II.
 
-5. functions for melting the tidy data set created in part I and finding the means of the relevant variables
+v. functions for melting the tidy data set created in part I and finding the means of the relevant variables
 
 meltAndFindMeans(df) : takes a data frame created in step 4 above, melts it into narrow form and creates a new variable with the means of all activity subject pairs. Returns a data frame that is then 11880 x 4 (11880 = 30 subjects * 6 activities * 66 variables)
 
 combineActivitySubjectCols(moltendf) : takes a data frame returned by meltAndFindMeans above and combines the first two columns (activity label and subject label) into one column for clarity, so each entry is a single activity subject pair, returns this data frame now with only 3 columns (activitySubjectPair, variable, and means)
 
 
-6. function to recast the above into a wide data frame
+vi. function to recast the above into a wide data frame
 
 recastDF(moltenDF) : takes a molten data frame returned by combineActivitySubjectCols above and recasts it as a wide data frame with each subject activity pair as a single row, with each variable's average in the columns. so it returns a 180 x 67 data frame
 
 
-7. function to do assignment prompt 5 all in a single step, from data frame in step 4
+vii. function to do assignment prompt 5 all in a single step, from data frame in step 4
 
 newTidyDataSetWithMeansWide(df) : takes a data frame from I. 4 above and applies functions from II. 5 and II. 6 above to return a single wide, tidy data frame with the first column renamed to 'activity/subject pairs' and the subsequent columns renamed to 'average of ...' whatever variable they're averaging..
 
