@@ -5,15 +5,22 @@ THE DATA
 The data is all stored in the directory UCI HAR Dataset, with further paths to the data described below.
 
 test/X_test.txt : The test data, with the measurements of the smartphone variables as different columns. Each row corresponds to a sample for a single subject and activity. The labels for these variables are not in this set, but rather are in the following two files. This data set is 2947 x 561, indicating 2947 observations of 561 variables.
+
 test/subject_test.txt: A single column text file containing the 2947 subject labels for the rows in the X_test file above
+
 test/y_test.txt: A single column text file containing the 2947 activity labels for the rows in the X_test file above.
 
 
 train/X_train.txt: just like X_test.txt but for the training data. 7352 rows (observations) of the 561 variables.
+
 train/subject_train.txt: just like subject_test.txt but for the training data. 7352 rows.
+
 train/y_train.txt: just like y_test.txt, but for the subject_data, again, 7352 rows.
 
-features.txt: a two column text file, with the second column giving the variable names that correspond to the columns of the X_test.txt and X_train.txt files above (the first column is just numerical labels.) It is 561 rows, 2 columns.
+features.txt: a two column text file, with the second column giving the variable names that correspond to the columns of the X_
+
+test.txt and X_train.txt files above (the first column is just numerical labels.) It is 561 rows, 2 columns.
+
 
 activity_labels.txt: a 6 row text file for converting the y_test and y_train activity labels (integers 1-6) to their corresponding activities (walking, walking upstairs, etc.)
 
