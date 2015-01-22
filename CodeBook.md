@@ -24,16 +24,23 @@ activity_labels.txt: a 6 row text file for converting the y_test and y_train act
 
 
 FUNCTIONS AND VARIABLES IN RUN_ANALYSIS.R
+
 contents:
 I.
 1. Helper functions for importing the data from the text files.
+
 2. Functions for finding the relevant data and renaming the columns/activity variables
+
 3. Functions for merging the test and train data
+
 4. Two functions to take the actual data files and return a clean, tidy data frame, stored in the variable tidyDFextractedRenamed
+
 
 II.
 5. functions for melting the tidy data set created in part I and finding the means of the relevant variables
+
 6. Function for recasting the melted data frame into a wide data frame, and 
+
 7. function to perform steps 5 and 6 in one step, and a variable to store final wide frame (meansOfSubjectActivityPairs), along with writing the final data frame to a txt file in the working directory.
 
 
