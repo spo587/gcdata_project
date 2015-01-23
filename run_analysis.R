@@ -61,6 +61,7 @@ findRelevantCols <- function(featureLabelFile){
 ## the next function finds the original names of these variables
 ## and stores them separately in a vector
 getPreliminaryColNames <- function(featureLabelFile){
+    featureLabelsVec <- labelVector(featureLabelFile,2)
     cols <- findRelevantCols(featureLabelFile)
     featureLabelsVec[cols] 
 }
@@ -190,6 +191,11 @@ tidyDFextractedRenamed <- makeTidyAndLabeledDataFrame()
 ## of each of the 66 variables we already extracted for each activity x subject
 ## pair.
 
+# first, load the plyr and reshape2 libraries
+
+library(plyr)
+library(reshape2)
+
 meltAndFindMeans <- function(df){
     melted <- melt(df, id.vars=c(names(df)[1], names(df)[2]))
     means <- ddply(melted, c(1,2,3), summarise,
@@ -242,4 +248,4 @@ newTidyDataSetWithMeansWide <- function(df){
 meansOfSubjectActivityPairs <- newTidyDataSetWithMeansWide(tidyDFextractedRenamed)
 
 ## write the data frame to a txt file in the working directory
-write.table(meansOfSubjectActivityPairs, 'DFprompt5averagesForEachSubjectActivityPair.txt', row.names=FALSE)
+#write.table(meansOfSubjectActivityPairs, 'DFprompt5averagesForEachSubjectActivityPair.txt', row.names=FALSE)
