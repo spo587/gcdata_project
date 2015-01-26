@@ -12,5 +12,6 @@ The second data frame, meansOfSubjectActivityPairs, takes mean value of each of 
 
 Running run_analysis.R will put the two data frames in your R session, along with the many helper functions in the run_analysis.R script. It also writes the final data frame to a txt file which will be stored in the working directory where the script is run. For more information on the functions and variables, see the code book, CodeBook.md, or the script itself, which contains more detailed information for each step of the processing.
 
+Dependencies: requires the plyr and reshape2 packages. If not already installed, use install.packages('plyr') and install.packages('reshape2')
 
 
